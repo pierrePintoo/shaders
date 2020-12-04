@@ -24,7 +24,7 @@ const material = new THREE.RawShaderMaterial({
     uniforms: {
         u_mouse: {type: 'v2', value: Mouse.cursor},
         u_rez: {type: 'v2', value: [canvasWidth, canvasHeight]},
-        u_time: {value : time}
+        u_time: {type: 'f', value : time}
     },
     fragmentShader: require('../shaders/screen.frag'),
     vertexShader: require('../shaders/screen.vert')

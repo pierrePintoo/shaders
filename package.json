@@ -7,6 +7,7 @@
   },
   "dependencies": {
     "gl-matrix": "^3.3.0",
+    "glslGallery": "0.0.9",
     "three": "^0.123.0"
   },
   "paths": {},
