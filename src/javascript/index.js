@@ -44,15 +44,14 @@ camera.position.z = 5
 const mainLight = new THREE.PointLight()
 scene.add(mainLight)
 renderer.render(scene, camera)
-
 // à chaque image : 60fps
 const update = () => {
-    time += .01
-
-    material.uniforms.u_time.value = time
     requestAnimationFrame(update)
+    time += .01
+    // console.log(Mouse.cursor[0])
+    material.uniforms.u_time.value = time
+    material.uniforms.u_mouse.value = Mouse.cursor
     renderer.render(scene, camera)
-
 
 }
 requestAnimationFrame(update)
