@@ -2,13 +2,14 @@
 precision mediump float;
 #endif
 
-uniform float time;
-
-vec4 red() {
-	return vec4(1.0,0.0,0.0,1.0);
+uniform float u_time;
+vec2 wowColors() {
+    return vec2(abs(sin(u_time)), abs(cos(u_time)));
+}
+vec4 colors() {
+	return vec4(wowColors(),abs(tan(u_time)),1.0);
 }
 
 void main() {
-
-	gl_FragColor = red();
+	gl_FragColor = colors();
 }

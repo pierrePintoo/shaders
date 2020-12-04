@@ -19,12 +19,12 @@ let cH2 = (canvas.height / 2)
 const renderer = new THREE.WebGLRenderer({canvas})
 renderer.setSize(window.innerWidth, window.innerHeight)
 renderer.setPixelRatio(window.devicePixelRatio)
-
+let time = 0
 const material = new THREE.RawShaderMaterial({
     uniforms: {
-        mouse: {type: 'v2', value: Mouse.cursor},
-        rez: {type: 'v2', value: [canvasWidth, canvasHeight]},
-        time: {value: 1.0}
+        u_mouse: {type: 'v2', value: Mouse.cursor},
+        u_res: {type: 'v2', value: [canvasWidth, canvasHeight]},
+        u_time: {value : time}
     },
     fragmentShader: require('../shaders/screen.frag'),
     vertexShader: require('../shaders/screen.vert')
@@ -47,7 +47,11 @@ renderer.render(scene, camera)
 
 // à chaque image : 60fps
 const update = () => {
+    time += .01
+
+    material.uniforms.u_time.value = time
     requestAnimationFrame(update)
+    renderer.render(scene, camera)
 
 
 }
